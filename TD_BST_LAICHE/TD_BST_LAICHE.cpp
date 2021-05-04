@@ -9,15 +9,11 @@ int main()
 	tree.size = 0;
 	tree.depth = 0;
 	tree.root = nullptr;
-	load("FictionalCharacters.csv", tab);
+	
 	
 		for (int i = 0; i <= 42; i++) {
-			cout << "-----------------------" << endl;
-			cout << "nom: " << tab[i].nom << endl;
-			cout << "prenom: " << tab[i].prenom << endl;
-			cout << "titre: " << tab[i].titre << endl;
-			cout << "age: " << tab[i].age << endl;
-			bool result = insert(tab[i].nom, i, &tree.root, &tree);
+			display_tab(tab,i);
+			bool result = insert(tab[i].nom, i, &tree.root, &tree); //insertion 
 			if (result == true)
 			{
 				cout << "true" << endl;
@@ -26,8 +22,20 @@ int main()
 				cout << "false" << endl;
 			}
 		}
+		cout << "----------------------------------" << endl;
 
-		display(tree.root);
+		bool result = check(&tree); //check if binary tree is a BST
+		if (result == true)
+		{
+			cout << "the tree is a BST" << endl;
+		}
+		else {
+			cout << "the tree isn't a BST" << endl;
+		}
+		//display(tree.root);
+		getheight(&tree.root, &tree);
+
+		cout << tree.depth << endl;
 	
 
 }

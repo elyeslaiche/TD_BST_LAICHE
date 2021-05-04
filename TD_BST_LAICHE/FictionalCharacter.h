@@ -13,3 +13,4 @@ typedef struct FictionalCharacter {
 };
 
 void load(string path, FictionalCharacter* ptr_tab);
+void display_tab(FictionalCharacter* tab, int i);
