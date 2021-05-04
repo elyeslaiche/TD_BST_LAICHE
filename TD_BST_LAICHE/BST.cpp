@@ -83,10 +83,10 @@ int getheight(node** noeud, BinaryTree* tree)
 	}
 }
 
-bool index(FictionalCharacter* tab, BinaryTree* tree)
+bool index(FictionalCharacter* tab, BinaryTree* tree, int datacount)
 {
 	bool result;
-	for (int i = 0; i <= sizeof(tab); i++) 
+	for (int i = 0; i < datacount; i++) 
 	{
 		 result = insert(tab[i].nom, i, &tree->root, tree); 
 	}

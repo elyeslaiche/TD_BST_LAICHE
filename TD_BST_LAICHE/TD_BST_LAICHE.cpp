@@ -9,34 +9,34 @@ int main()
 	tree.size = 0;
 	tree.depth = 0;
 	tree.root = nullptr;
-	
-	
-		for (int i = 0; i <= 42; i++) {
-			display_tab(tab,i);
-			bool result = insert(tab[i].nom, i, &tree.root, &tree); //insertion 
-			if (result == true)
-			{
-				cout << "true" << endl;
-			}
-			else {
-				cout << "false" << endl;
-			}
-		}
-		cout << "----------------------------------" << endl;
+	load("FictionalCharacters.csv", tab);
+	int size = sizeof(tab) / sizeof(tab[0]);
+	bool result = index(tab, &tree, size);
+	display(tree.root);
+	if (result == true)
+	{
+		cout << "true" << endl;
+	}
+	else
+	{
+		cout << "false" << endl;
+	}
 
-		bool result = check(&tree); //check if binary tree is a BST
-		if (result == true)
-		{
-			cout << "the tree is a BST" << endl;
-		}
-		else {
-			cout << "the tree isn't a BST" << endl;
-		}
-		//display(tree.root);
-		getheight(&tree.root, &tree);
+	cout << "----------------------------------" << endl;
 
-		cout << tree.depth << endl;
-	
+	result = check(&tree); //check if binary tree is a BST
+	if (result == true)
+	{
+		cout << "the tree is a BST" << endl;
+	}
+	else {
+		cout << "the tree isn't a BST" << endl;
+	}
+	//display(tree.root);
+	getheight(&tree.root, &tree);
+
+	cout << tree.depth << endl;
+
 
 }
 
