@@ -1,7 +1,7 @@
 #include "FictionalCharacter.h"
 #include "BST.h"
 
-bool insert(string key, int index, node** noeud, BinaryTree* arbre)
+bool insert(string key, int index, node** noeud)
 {
 	if ((*noeud) == nullptr)
 	{
@@ -10,17 +10,16 @@ bool insert(string key, int index, node** noeud, BinaryTree* arbre)
 		(*noeud)->key = key;
 		(*noeud)->left = nullptr;
 		(*noeud)->right = nullptr;
-		arbre->size++;
 	}
 	else {
 		if (key.compare((*noeud)->key) > 0) // key apres (*noeud)->key ds l'alphabet
 		{
-			return insert(key, index, &(*noeud)->right, arbre);
+			return insert(key, index, &(*noeud)->right);
 		}
 		else {
 			if (key.compare((*noeud)->key) < 0) // key avant (*noeud)->key ds l'alphabet
 			{
-				return insert(key, index, &(*noeud)->left, arbre);
+				return insert(key, index, &(*noeud)->left);
 			}
 			else {
 				return false;
@@ -83,12 +82,12 @@ int getheight(node** noeud, BinaryTree* tree)
 	}
 }
 
-bool index(FictionalCharacter* tab, BinaryTree* tree, int datacount)
+bool index(FictionalCharacter* tab, node** noeud, int datacount)
 {
 	bool result;
 	for (int i = 0; i < datacount; i++) 
 	{
-		 result = insert(tab[i].nom, i, &tree->root, tree); 
+		 result = insert(tab[i].nom, i, noeud); 
 	}
 	return result;
 }

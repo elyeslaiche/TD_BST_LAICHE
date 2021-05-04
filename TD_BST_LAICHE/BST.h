@@ -12,8 +12,8 @@ struct BinaryTree {
 	node* root;
 };
 
-bool insert(string key, int index, node** noeud, BinaryTree* racine);
+bool insert(string key, int index, node** noeud);
 void display(node* t);
 bool check(BinaryTree* tree);
 int getheight(node** noeud, BinaryTree* tree);
-bool index(FictionalCharacter* tab, BinaryTree* tree, int datacount);
+bool index(FictionalCharacter* tab, node** noeud, int datacount);

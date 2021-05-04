@@ -2,6 +2,7 @@
 //
 #include "FictionalCharacter.h"
 #include "BST.h"
+#include "Database.h"
 int main()
 {
 	FictionalCharacter tab[43];
@@ -11,7 +12,7 @@ int main()
 	tree.root = nullptr;
 	load("FictionalCharacters.csv", tab);
 	int size = sizeof(tab) / sizeof(tab[0]);
-	bool result = index(tab, &tree, size);
+	/*bool result = index(tab, &tree, size);
 	display(tree.root);
 	if (result == true)
 	{
@@ -35,9 +36,9 @@ int main()
 	//display(tree.root);
 	getheight(&tree.root, &tree);
 
-	cout << tree.depth << endl;
+	cout << tree.depth << endl;*/
 
-
+	createDatabase("FictionalCharacters.csv", tab, &tree.root, &tree);
 }
 
 
