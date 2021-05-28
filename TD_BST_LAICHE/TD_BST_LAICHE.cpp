@@ -22,9 +22,11 @@ int main()
 	}
 	cout << aaa << endl;
 	display(tree.root);
-	find_carac(tab,&(tree.root),"Janie");
-	find_carac(tab, &(tree.root), "Jani");
-	return 0;
+	//find_carac(tab,&(tree.root),"Janie");
+	//find_carac(tab, &(tree.root), "Jani");
+	string a = "Bo";
+	cout << a.compare("Brother");
+	find_range(tab, &(tree.root), "Ja", "Pi");
 }
 
 

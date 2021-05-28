@@ -82,7 +82,7 @@ bool index(FictionalCharacter* tab, node** noeud, int datacount)
 	bool result = false;
 	for (int i = 0; i < datacount; i++)
 	{
-		result = insert(tab[i].prenom, i, noeud); // on utilise prénom pour eviter que l'arbre soit totalement à droite vu que 
+		result = insert(tab[i].nom, i, noeud); // on utilise prénom pour eviter que l'arbre soit totalement à droite vu que 
 		//le fichier csv est classé par ordre alphabétique pour les noms
 	}
 	return result;
@@ -104,4 +104,26 @@ void find_carac(FictionalCharacter* tab, node** node, string name)
 			find_carac(tab, &(*node)->right, name);
 	}
 
+}
+
+void find_range(FictionalCharacter* tab, node** node, string name1, string name2)
+{
+	static int somme = 0;
+	static float moy = 0.0;
+	static int cpt = 0;
+	if (name1.compare((*node)->key) <= 0)
+	{
+		if (name2.compare((*node)->key) >= 0)
+		{
+			display_tab(tab, (*node)->index);
+			somme += tab[(*node)->index].age;
+			cpt++;
+			moy = (float)somme / (float)cpt;
+			cout << "l'age moyen est:" << moy << endl;
+		}
+	}
+	if ((*node)->left != nullptr)
+		find_range(tab, &(*node)->left, name1, name2);
+	if ((*node)->right != nullptr)
+		find_range(tab, &(*node)->right, name1, name2);
 }
