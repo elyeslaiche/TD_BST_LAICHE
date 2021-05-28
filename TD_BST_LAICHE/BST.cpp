@@ -34,60 +34,74 @@ void display(node* t) {
 
 	if (t->left != nullptr)
 		display(t->left);
-	cout << t->index << " ";
-	cout << t->key << " ";
+	cout << "(" << t->index << " ";
+	cout << t->key << ")" << " ";
 	if (t->right != nullptr)
 		display(t->right);
 }
 
-bool check(BinaryTree* tree)
+bool check(node* node)  // a refaire , mettre une variable plus mettre next et return la fonction 
 {
-	int i = 0;
-	while (i <= tree->size)
-	{
-		if ((tree->root->left != nullptr) && (tree->root->key < tree->root->left->key))
-		{
-			return false;
-		}
-		else
-		{
-			if ((tree->root->right != nullptr) && (tree->root->key > tree->root->right->key))
-			{
-				return false;
-			}
-		}
-		i++;
-	}
+	if (node == nullptr)
+		return true;
+
+	// faux par rapport aux mauvaises insertions de nom gauche > noeud en question
+	if (node->left != nullptr && node->left->key > node->key)
+		return false;
+
+	// faux par rapport aux mauvaises insertions de nom droite < noeud en question
+	if (node->right != nullptr && node->right->key < node->key)
+		return false;
+
+	//test recursif
+	if (!check(node->left) || !check(node->right))
+		return false;
+
+	// si on passe ts les tests c'est un bst
 	return true;
 }
 
-int getheight(node** noeud, BinaryTree* tree)
+
+int getheight(node** noeud, BinaryTree* tree) // a finaliser
 {
-	if (((*noeud)->left == nullptr) && ((*noeud)->right == nullptr))
+	if ((*noeud)->right == nullptr)
 	{
+		tree->depth++;
 		return tree->depth;
 	}
 	else
 	{
-		if ((*noeud)->left == nullptr)
-		{
-			tree->depth++;
-			getheight(&(*noeud)->right, tree);
-		}
-		else
-		{
-			tree->depth++;
-			getheight(&(*noeud)->left, tree);
-		}
+		tree->depth++;
+		getheight(&(*noeud)->right, tree);
 	}
 }
 
+
 bool index(FictionalCharacter* tab, node** noeud, int datacount)
 {
-	bool result;
-	for (int i = 0; i < datacount; i++) 
+	bool result = false;
+	for (int i = 0; i < datacount; i++)
 	{
-		 result = insert(tab[i].nom, i, noeud); 
+		result = insert(tab[i].prenom, i, noeud); // on utilise prénom pour eviter que l'arbre soit totalement à droite vu que 
+		//le fichier csv est classé par ordre alphabétique pour les noms
 	}
 	return result;
+}
+
+void find_carac(FictionalCharacter* tab, node** node, string name)
+{
+
+	if ((*node)->key == name)
+	{
+		display_tab(tab, (*node)->index);
+		EXIT_SUCCESS;
+	}
+	else
+	{
+		if ((*node)->left != nullptr)
+			find_carac(tab, &(*node)->left, name);
+		if ((*node)->right != nullptr)
+			find_carac(tab, &(*node)->right, name);
+	}
+
 }

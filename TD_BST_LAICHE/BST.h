@@ -6,7 +6,7 @@ typedef struct node {
 	node* left;
 	node* right;
 };
-struct BinaryTree {
+typedef struct BinaryTree {
 	int size;
 	int depth;
 	node* root;
@@ -14,6 +14,7 @@ struct BinaryTree {
 
 bool insert(string key, int index, node** noeud);
 void display(node* t);
-bool check(BinaryTree* tree);
+bool check(node* node);
 int getheight(node** noeud, BinaryTree* tree);
+void find_carac(FictionalCharacter* tab, node** node, string name);
 bool index(FictionalCharacter* tab, node** noeud, int datacount);

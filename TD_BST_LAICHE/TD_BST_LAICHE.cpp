@@ -13,7 +13,6 @@ int main()
 	load("FictionalCharacters.csv", tab);
 	int size = sizeof(tab) / sizeof(tab[0]);
 	/*bool result = index(tab, &tree, size);
-	display(tree.root);
 	if (result == true)
 	{
 		cout << "true" << endl;
@@ -26,19 +25,27 @@ int main()
 	cout << "----------------------------------" << endl;
 
 	result = check(&tree); //check if binary tree is a BST
-	if (result == true)
+	
+	display(tree.root);
+
+	
+	cout << tree.depth << endl;*/
+	
+	createDatabase("FictionalCharacters.csv", tab, &tree.root);
+	int aaa = getheight(&tree.root, &tree);
+	bool aa = check(tree.root);
+	if (aa == true)
 	{
 		cout << "the tree is a BST" << endl;
 	}
 	else {
 		cout << "the tree isn't a BST" << endl;
 	}
-	//display(tree.root);
-	getheight(&tree.root, &tree);
-
-	cout << tree.depth << endl;*/
-
-	createDatabase("FictionalCharacters.csv", tab, &tree.root, &tree);
+	cout << aaa << endl;
+	display(tree.root);
+	find_carac(tab,&(tree.root),"Janie");
+	find_carac(tab, &(tree.root), "Jani");
+	return 0;
 }
 
 

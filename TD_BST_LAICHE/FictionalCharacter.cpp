@@ -26,4 +26,5 @@ void display_tab(FictionalCharacter* tab, int i)
 	cout << "prenom: " << tab[i].prenom << endl;
 	cout << "titre: " << tab[i].titre << endl;
 	cout << "age: " << tab[i].age << endl;
+	
 }
