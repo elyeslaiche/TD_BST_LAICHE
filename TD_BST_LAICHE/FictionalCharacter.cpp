@@ -21,10 +21,11 @@ void load(string path, FictionalCharacter* ptr_tab) {
 
 void display_tab(FictionalCharacter* tab, int i)
 {
-	cout << "-----------------------" << endl;
+	cout << "\n-----------------------" << endl;
 	cout << "nom: " << tab[i].nom << endl;
 	cout << "prenom: " << tab[i].prenom << endl;
 	cout << "titre: " << tab[i].titre << endl;
 	cout << "age: " << tab[i].age << endl;
+	cout << "-----------------------" << endl;
 	
 }
